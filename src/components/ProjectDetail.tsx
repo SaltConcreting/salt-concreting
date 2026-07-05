@@ -112,11 +112,11 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
       {project.overviewImage && (
         <section aria-label="Project overview image">
           <AnimateOnScroll direction="none">
-            <div className="relative aspect-[16/9] min-h-[420px] sm:aspect-[21/9] sm:min-h-[480px]">
+            <div className="relative w-full aspect-[16/9] sm:aspect-[21/9] xl:min-h-[480px]">
               <ProjectImage
                 src={project.overviewImage.src}
                 alt={project.overviewImage.alt}
-                className="absolute inset-0 h-full w-full"
+                className="h-full w-full"
                 objectPosition={project.overviewImage.objectPosition}
                 sizes="100vw"
               />
@@ -138,12 +138,13 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                   <AnimateOnScroll delay={index * 80}>
                     <figure>
                       {item.fullWidth && item.type === "image" ? (
-                        <div className="relative aspect-[16/9] min-h-[420px] sm:aspect-[21/9] sm:min-h-[480px]">
+                        <div className="relative w-full aspect-[16/9] sm:aspect-[21/9] xl:min-h-[480px]">
                           <ProjectImage
                             src={item.src}
                             alt={item.alt}
-                            className="absolute inset-0 h-full w-full"
+                            className="h-full w-full"
                             objectPosition={item.objectPosition}
+                            mobileObjectPosition={item.mobileObjectPosition}
                             sizes="100vw"
                           />
                         </div>
@@ -161,8 +162,9 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                             <ProjectImage
                               src={item.src}
                               alt={item.alt}
-                              className="absolute inset-0 h-full w-full"
+                              className="h-full w-full"
                               objectPosition={item.objectPosition}
+                              mobileObjectPosition={item.mobileObjectPosition}
                               sizes="(max-width: 1024px) 100vw, 90rem"
                             />
                           )}
@@ -236,11 +238,11 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
       {/* Closing hero image */}
       {!project.mediaSections && (
         <section aria-label="Completed project">
-          <div className="relative aspect-[16/9] min-h-[420px] sm:aspect-[21/9] sm:min-h-[480px]">
+          <div className="relative w-full aspect-[16/9] sm:aspect-[21/9] xl:min-h-[480px]">
             <ProjectImage
               src={project.closingImage}
               alt={project.closingImageAlt}
-              className="absolute inset-0 h-full w-full"
+              className="h-full w-full"
               objectPosition={project.closingObjectPosition}
               sizes="100vw"
             />

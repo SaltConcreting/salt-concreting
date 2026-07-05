@@ -19,6 +19,7 @@ export type ProjectMediaItem = {
   alt: string;
   caption: string;
   objectPosition?: string;
+  mobileObjectPosition?: string;
   fullWidth?: boolean;
 };
 

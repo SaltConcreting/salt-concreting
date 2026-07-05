@@ -40,7 +40,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   return (
     <>
       <Navbar />
-      <main>
+      <main className="w-full min-w-0 max-w-full">
         <ProjectDetail project={project} />
       </main>
       <Footer />

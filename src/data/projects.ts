@@ -217,6 +217,7 @@ export const projects: ProjectDetail[] = [
         caption:
           "Freshly poured concrete settled into the curved forms before hand finishing began.",
         objectPosition: "center center",
+        mobileObjectPosition: "55% 86%",
         fullWidth: true,
       },
       {

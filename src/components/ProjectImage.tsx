@@ -7,6 +7,7 @@ type ProjectImageProps = {
   priority?: boolean;
   sizes?: string;
   objectPosition?: string;
+  mobileObjectPosition?: string;
 };
 
 export default function ProjectImage({
@@ -16,17 +17,30 @@ export default function ProjectImage({
   priority = false,
   sizes = "100vw",
   objectPosition = "center center",
+  mobileObjectPosition,
 }: ProjectImageProps) {
+  const usesAdaptivePosition = Boolean(mobileObjectPosition);
+  const isPositioned = /\b(absolute|fixed|sticky)\b/.test(className);
+
   return (
-    <div className={`relative overflow-hidden ${className}`}>
+    <div
+      className={`overflow-hidden ${isPositioned ? "" : "relative"} ${className}`}
+    >
       <Image
         src={src}
         alt={alt}
         fill
         priority={priority}
         sizes={sizes}
-        className="image-zoom object-cover"
-        style={{ objectPosition }}
+        className={`image-zoom object-cover${usesAdaptivePosition ? " object-position-adaptive" : ""}`}
+        style={
+          usesAdaptivePosition
+            ? ({
+                "--object-position": objectPosition,
+                "--mobile-object-position": mobileObjectPosition,
+              } as React.CSSProperties)
+            : { objectPosition }
+        }
         quality={90}
       />
     </div>

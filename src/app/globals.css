@@ -31,6 +31,22 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
+}
+
+@media (max-width: 639px) {
+  .object-position-adaptive {
+    object-position: var(
+      --mobile-object-position,
+      var(--object-position, center center)
+    );
+  }
+}
+
+@media (min-width: 640px) {
+  .object-position-adaptive {
+    object-position: var(--object-position, center center);
+  }
 }
 
 body {
