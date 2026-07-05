@@ -1,0 +1,222 @@
+@import "tailwindcss";
+
+@theme {
+  /* SALT — black, warm white, mustard gold only */
+  --color-black: #0a0a0a;
+  --color-black-soft: #111111;
+  --color-black-muted: #1a1a1a;
+  --color-warm-white: #f7f5f2;
+  --color-warm-white-muted: #e8e4df;
+  --color-muted: #8a8680;
+  --color-muted-light: #a8a4a0;
+  --color-muted-dark: #6b6762;
+  --color-gold: #c4a35a;
+  --color-gold-light: #d4b872;
+  --color-gold-dark: #a88b42;
+
+  /* Legacy aliases */
+  --color-charcoal: #111111;
+  --color-charcoal-light: #1a1a1a;
+  --color-charcoal-dark: #0a0a0a;
+  --color-concrete: #8a8680;
+  --color-concrete-light: #a8a4a0;
+  --color-concrete-dark: #6b6762;
+  --color-bronze: #c4a35a;
+  --color-bronze-light: #d4b872;
+  --color-bronze-dark: #a88b42;
+
+  --font-display: var(--font-cormorant);
+  --font-body: var(--font-dm-sans);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-black);
+  color: var(--color-warm-white);
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-weight: 300;
+  letter-spacing: 0.01em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: color-mix(in srgb, var(--color-gold) 30%, transparent);
+  color: var(--color-warm-white);
+}
+
+/* Typography */
+.heading-display {
+  font-family: var(--font-display);
+  font-weight: 300;
+  letter-spacing: -0.03em;
+  line-height: 1.02;
+}
+
+.heading-section {
+  font-family: var(--font-display);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+}
+
+.heading-card {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  line-height: 1.15;
+}
+
+.label-luxury {
+  font-weight: 400;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+}
+
+/* Section spacing — generous whitespace */
+.section-padding {
+  padding-top: clamp(5rem, 14vw, 10rem);
+  padding-bottom: clamp(5rem, 14vw, 10rem);
+}
+
+/* Scroll animations */
+.animate-fade-up,
+.animate-fade-left,
+.animate-fade-right,
+.animate-fade-in,
+.animate-scale-in {
+  opacity: 0;
+  transition:
+    opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.animate-fade-up {
+  transform: translateY(48px);
+}
+
+.animate-fade-left {
+  transform: translateX(-48px);
+}
+
+.animate-fade-right {
+  transform: translateX(48px);
+}
+
+.animate-fade-in {
+  transform: none;
+}
+
+.animate-scale-in {
+  transform: scale(1.04);
+}
+
+.animate-fade-up.is-visible,
+.animate-fade-left.is-visible,
+.animate-fade-right.is-visible,
+.animate-fade-in.is-visible,
+.animate-scale-in.is-visible {
+  opacity: 1;
+  transform: translate(0, 0) scale(1);
+}
+
+/* Text reveal line */
+.text-reveal-line {
+  display: block;
+  overflow: hidden;
+}
+
+.text-reveal-line > span {
+  display: block;
+  transform: translateY(110%);
+  transition: transform 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.text-reveal-line.is-visible > span {
+  transform: translateY(0);
+}
+
+/* Image treatments */
+.image-zoom {
+  transition: transform 1.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.group:hover .image-zoom {
+  transform: scale(1.05);
+}
+
+.image-reveal {
+  clip-path: inset(0 0 0 0);
+  transition: clip-path 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Gold accent line */
+.gold-line {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-gold) 20%,
+    var(--color-gold) 80%,
+    transparent
+  );
+}
+
+/* Link underline */
+.link-underline {
+  position: relative;
+}
+
+.link-underline::after {
+  content: "";
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--color-gold);
+  transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.link-underline:hover::after {
+  width: 100%;
+}
+
+/* Process connector */
+.process-line {
+  background: linear-gradient(
+    90deg,
+    var(--color-gold-dark),
+    var(--color-gold),
+    var(--color-gold-dark)
+  );
+  opacity: 0.35;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .animate-fade-up,
+  .animate-fade-left,
+  .animate-fade-right,
+  .animate-fade-in,
+  .animate-scale-in {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .text-reveal-line > span {
+    transform: none;
+    transition: none;
+  }
+
+  .group:hover .image-zoom {
+    transform: none;
+  }
+}
