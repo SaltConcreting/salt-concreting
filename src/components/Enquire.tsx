@@ -32,8 +32,10 @@ export default function Enquire() {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [submitted, setSubmitted] = useState(false);
   const [selectedFiles, setSelectedFiles] = useState<string[]>([]);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const form = formRef.current;
     if (!form) return;
@@ -43,9 +45,38 @@ export default function Enquire() {
       return;
     }
 
-    setSubmitted(true);
-    form.reset();
-    setSelectedFiles([]);
+    setSubmitError(null);
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch("/api/enquiry", {
+        method: "POST",
+        body: new FormData(form),
+      });
+
+      const data = (await response.json()) as {
+        success?: boolean;
+        error?: string;
+      };
+
+      if (!response.ok) {
+        setSubmitError(
+          data.error ??
+            "We couldn't send your enquiry. Please try again or email us directly.",
+        );
+        return;
+      }
+
+      setSubmitted(true);
+      form.reset();
+      setSelectedFiles([]);
+    } catch {
+      setSubmitError(
+        "We couldn't send your enquiry. Please check your connection and try again.",
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleFileChange = () => {
@@ -102,7 +133,10 @@ export default function Enquire() {
                   </p>
                   <button
                     type="button"
-                    onClick={() => setSubmitted(false)}
+                    onClick={() => {
+                      setSubmitted(false);
+                      setSubmitError(null);
+                    }}
                     className="link-underline mt-12 self-start text-xs font-light tracking-wide text-muted-light transition-colors duration-500 hover:text-warm-white"
                   >
                     Submit another enquiry
@@ -292,11 +326,21 @@ export default function Enquire() {
                     </div>
                   </div>
 
+                  {submitError && (
+                    <div
+                      role="alert"
+                      className="border border-red-500/30 bg-red-500/5 px-5 py-4 text-sm font-light leading-[1.8] text-red-200"
+                    >
+                      {submitError}
+                    </div>
+                  )}
+
                   <button
                     type="submit"
-                    className="inline-flex w-full items-center justify-center rounded-none border border-gold bg-gold px-12 py-[1.125rem] font-body text-[11px] font-normal uppercase tracking-[0.25em] text-black transition-all duration-500 hover:border-gold-light hover:bg-gold-light hover:shadow-[0_8px_32px_rgba(196,163,90,0.15)] sm:w-auto"
+                    disabled={isSubmitting}
+                    className="inline-flex w-full items-center justify-center rounded-none border border-gold bg-gold px-12 py-[1.125rem] font-body text-[11px] font-normal uppercase tracking-[0.25em] text-black transition-all duration-500 hover:border-gold-light hover:bg-gold-light hover:shadow-[0_8px_32px_rgba(196,163,90,0.15)] disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
                   >
-                    Send Enquiry
+                    {isSubmitting ? "Sending..." : "Send Enquiry"}
                   </button>
                 </form>
               )}
