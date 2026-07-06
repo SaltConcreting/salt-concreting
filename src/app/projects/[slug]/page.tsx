@@ -26,6 +26,9 @@ export async function generateMetadata({
   return {
     title: `${project.title} | SALT Concreting & Carpentry`,
     description: project.introduction.paragraphs[0],
+    alternates: {
+      canonical: `/projects/${slug}`,
+    },
   };
 }
 

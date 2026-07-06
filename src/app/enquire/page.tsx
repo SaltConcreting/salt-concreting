@@ -8,6 +8,9 @@ export const metadata: Metadata = {
   title: "Enquire | SALT Concreting & Carpentry",
   description:
     "Share your architectural concrete project with SALT. We respond within 1–2 business days with a tailored consultation.",
+  alternates: {
+    canonical: "/enquire",
+  },
 };
 
 export default function EnquirePage() {
