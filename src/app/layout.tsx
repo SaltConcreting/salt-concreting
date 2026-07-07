@@ -1,5 +1,11 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, DM_Sans } from "next/font/google";
+import {
+  buildOpenGraph,
+  buildTwitter,
+  DEFAULT_DESCRIPTION,
+  DEFAULT_TITLE,
+} from "@/lib/metadata";
 import { getSiteOrigin } from "@/lib/site";
 import "./globals.css";
 
@@ -19,12 +25,20 @@ const dmSans = DM_Sans({
 
 export const metadata: Metadata = {
   metadataBase: getSiteOrigin(),
-  title: "SALT Concreting & Carpentry | Architectural Concrete · Sydney",
-  description:
-    "Luxury architectural concrete and carpentry for Sydney's finest residential and commercial projects. Craftsmanship without compromise.",
+  title: DEFAULT_TITLE,
+  description: DEFAULT_DESCRIPTION,
   alternates: {
     canonical: "/",
   },
+  openGraph: buildOpenGraph({
+    title: DEFAULT_TITLE,
+    description: DEFAULT_DESCRIPTION,
+    path: "/",
+  }),
+  twitter: buildTwitter({
+    title: DEFAULT_TITLE,
+    description: DEFAULT_DESCRIPTION,
+  }),
 };
 
 export default function RootLayout({
