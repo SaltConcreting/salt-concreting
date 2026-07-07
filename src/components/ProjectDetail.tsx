@@ -1,5 +1,6 @@
 import Link from "next/link";
 import AnimateOnScroll from "./AnimateOnScroll";
+import MoreProjects from "./MoreProjects";
 import ProjectHeroVideo from "./ProjectHeroVideo";
 import ProjectImage from "./ProjectImage";
 import ProjectVideo from "./ProjectVideo";
@@ -266,6 +267,8 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
         </section>
       )}
 
+      <MoreProjects currentSlug={project.slug} />
+
       {/* Call to action */}
       <section
         className="relative bg-black section-padding"
@@ -281,7 +284,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
             </p>
             <div className="mt-14 sm:mt-16">
               <Link
-                href="/#contact"
+                href="/enquire"
                 className="inline-flex items-center justify-center rounded-none border border-gold bg-gold px-12 py-[1.125rem] font-body text-[11px] font-normal uppercase tracking-[0.25em] text-black transition-all duration-500 hover:border-gold-light hover:bg-gold-light hover:shadow-[0_8px_32px_rgba(196,163,90,0.15)]"
               >
                 Enquire

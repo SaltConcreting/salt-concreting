@@ -2,16 +2,9 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { mainNavLinks } from "@/lib/navigation";
 import Logo from "./Logo";
 import QuoteButton from "./QuoteButton";
-
-const navLinks = [
-  { label: "Work", href: "#projects" },
-  { label: "Services", href: "#services" },
-  { label: "About", href: "#about" },
-  { label: "Process", href: "#process" },
-  { label: "Contact", href: "#contact" },
-];
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -44,15 +37,15 @@ export default function Navbar() {
         </Link>
 
         <ul className="hidden items-center gap-10 xl:gap-14 lg:flex">
-          {navLinks.map((link) => (
+          {mainNavLinks.map((link) => (
             <li key={link.href}>
-              <a
+              <Link
                 href={link.href}
                 className="group relative font-body text-[10px] font-normal uppercase tracking-[0.22em] text-muted-light transition-colors duration-500 hover:text-warm-white"
               >
                 {link.label}
                 <span className="absolute -bottom-2 left-0 h-px w-0 bg-gold transition-all duration-500 group-hover:w-full" />
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
@@ -94,18 +87,18 @@ export default function Navbar() {
         }`}
       >
         <ul className="flex flex-col items-center gap-12">
-          {navLinks.map((link, index) => (
+          {mainNavLinks.map((link, index) => (
             <li
               key={link.href}
               style={{ transitionDelay: `${index * 50}ms` }}
             >
-              <a
+              <Link
                 href={link.href}
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="heading-section text-3xl text-warm-white transition-colors duration-500 hover:text-gold-light sm:text-4xl"
               >
                 {link.label}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
