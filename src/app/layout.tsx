@@ -51,6 +51,12 @@ export default function RootLayout({
   return (
     <html lang="en-AU" className={`${cormorant.variable} ${dmSans.variable}`}>
       <body className="antialiased">
+        <a
+          href="#main-content"
+          className="sr-only focus:fixed focus:left-6 focus:top-6 focus:z-[100] focus:block focus:h-auto focus:w-auto focus:overflow-visible focus:whitespace-normal focus:rounded focus:bg-warm-white focus:px-4 focus:py-2 focus:text-sm focus:text-black focus:outline-none"
+        >
+          Skip to main content
+        </a>
         <JsonLd data={buildSiteSchemaGraph()} />
         {children}
       </body>

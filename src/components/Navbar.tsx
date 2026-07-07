@@ -31,7 +31,10 @@ export default function Navbar() {
           : "bg-transparent"
       }`}
     >
-      <nav className="mx-auto flex max-w-[90rem] items-center justify-between px-6 py-6 sm:px-10 lg:px-16 lg:py-8">
+      <nav
+        aria-label="Main navigation"
+        className="mx-auto flex max-w-[90rem] items-center justify-between px-6 py-6 sm:px-10 lg:px-16 lg:py-8"
+      >
         <Link href="/" aria-label="SALT Concreting & Carpentry — Home">
           <Logo />
         </Link>

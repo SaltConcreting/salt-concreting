@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import Enquire from "@/components/Enquire";
 import Footer from "@/components/Footer";
+import JsonLd from "@/components/JsonLd";
 import Navbar from "@/components/Navbar";
 import ServiceArea from "@/components/ServiceArea";
 import { buildOpenGraph, buildTwitter } from "@/lib/metadata";
+import { buildEnquireSchemaGraph } from "@/lib/schema";
 
 const title = "Enquire | SALT Concreting & Carpentry";
 const description =
@@ -29,8 +31,9 @@ export const metadata: Metadata = {
 export default function EnquirePage() {
   return (
     <>
+      <JsonLd data={buildEnquireSchemaGraph(description)} />
       <Navbar />
-      <main>
+      <main id="main-content">
         <Enquire />
         <ServiceArea />
       </main>

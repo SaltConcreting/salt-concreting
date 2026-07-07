@@ -29,7 +29,10 @@ export async function generateMetadata({
   const project = getProjectBySlug(slug);
 
   if (!project) {
-    return { title: "Project Not Found | SALT Concreting & Carpentry" };
+    return {
+      title: "Project Not Found | SALT Concreting & Carpentry",
+      robots: { index: false, follow: true },
+    };
   }
 
   const title = buildProjectTitle(project);
@@ -69,7 +72,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     <>
       <JsonLd data={buildProjectSchemaGraph(project)} />
       <Navbar />
-      <main className="w-full min-w-0 max-w-full">
+      <main id="main-content" className="w-full min-w-0 max-w-full">
         <ProjectDetail project={project} />
       </main>
       <Footer />

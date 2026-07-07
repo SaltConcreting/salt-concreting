@@ -72,7 +72,7 @@ function businessImageUrl(): string {
 export function buildSiteSchemaGraph(): Record<string, unknown> {
   const orgId = organizationId();
   const siteId = websiteId();
-  const siteUrl = getSiteUrl();
+  const homeUrl = absoluteUrl("/");
 
   return {
     "@context": "https://schema.org",
@@ -81,7 +81,7 @@ export function buildSiteSchemaGraph(): Record<string, unknown> {
         "@type": ["Organization", "HomeAndConstructionBusiness", "ProfessionalService"],
         "@id": orgId,
         name: SITE_NAME,
-        url: siteUrl,
+        url: homeUrl,
         description: DEFAULT_DESCRIPTION,
         image: businessImageUrl(),
         logo: businessImageUrl(),
@@ -120,11 +120,36 @@ export function buildSiteSchemaGraph(): Record<string, unknown> {
       {
         "@type": "WebSite",
         "@id": siteId,
-        url: siteUrl,
+        url: homeUrl,
         name: SITE_NAME,
         description: DEFAULT_DESCRIPTION,
         inLanguage: "en-AU",
         publisher: { "@id": orgId },
+      },
+    ],
+  };
+}
+
+const ENQUIRE_DESCRIPTION =
+  "Discuss your architectural concrete project with SALT. Servicing Greater Sydney, we respond within 1–2 business days with a tailored consultation.";
+
+export function buildEnquireSchemaGraph(
+  description: string = ENQUIRE_DESCRIPTION,
+): Record<string, unknown> {
+  const pageUrl = absoluteUrl("/enquire");
+
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "ContactPage",
+        "@id": `${pageUrl}#webpage`,
+        url: pageUrl,
+        name: "Enquire | SALT Concreting & Carpentry",
+        description,
+        inLanguage: "en-AU",
+        isPartOf: { "@id": websiteId() },
+        about: { "@id": organizationId() },
       },
     ],
   };
@@ -147,7 +172,7 @@ export function buildProjectSchemaGraph(project: ProjectDetail): Record<string, 
             "@type": "ListItem",
             position: 1,
             name: "Home",
-            item: getSiteUrl(),
+            item: absoluteUrl("/"),
           },
           {
             "@type": "ListItem",
