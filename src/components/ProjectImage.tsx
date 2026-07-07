@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { getImageMetadata } from "@/lib/image-metadata";
 
 type ProjectImageProps = {
   src: string;
@@ -21,6 +22,8 @@ export default function ProjectImage({
 }: ProjectImageProps) {
   const usesAdaptivePosition = Boolean(mobileObjectPosition);
   const isPositioned = /\b(absolute|fixed|sticky)\b/.test(className);
+  const metadata = getImageMetadata(src);
+  const blurDataURL = metadata?.blurDataURL;
 
   return (
     <div
@@ -31,7 +34,10 @@ export default function ProjectImage({
         alt={alt}
         fill
         priority={priority}
+        loading={priority ? undefined : "lazy"}
         sizes={sizes}
+        placeholder={blurDataURL ? "blur" : "empty"}
+        blurDataURL={blurDataURL}
         className={`image-zoom object-cover${usesAdaptivePosition ? " object-position-adaptive" : ""}`}
         style={
           usesAdaptivePosition
@@ -41,7 +47,7 @@ export default function ProjectImage({
               } as React.CSSProperties)
             : { objectPosition }
         }
-        quality={90}
+        quality={80}
       />
     </div>
   );
@@ -85,7 +91,7 @@ export const heroSlides: HeroSlide[] = [
   },
   {
     src: projectImages.concreteSeat,
-    alt: "Curved floating architectural concrete bench",
+    alt: "Curved floating architectural concrete bench beside pool",
     // Lower anchor brings curved seat and pool edge into frame; upper wall recedes.
     objectPosition: "48% 63%",
   },

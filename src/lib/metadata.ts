@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import type { ProjectDetail } from "@/types/project";
+import { getImageMetadata } from "./image-metadata";
 
 export const SITE_NAME = "SALT Concreting & Carpentry";
 
@@ -38,17 +39,19 @@ type ShareImage = {
 };
 
 export function getProjectShareImage(project: ProjectDetail): ShareImage {
-  if (project.heroImage) {
-    return { url: project.heroImage, alt: project.heroAlt };
-  }
+  const shareImage = project.heroImage
+    ? { url: project.heroImage, alt: project.heroAlt }
+    : project.heroVideo
+      ? { url: project.heroVideo.poster, alt: project.heroAlt }
+      : { url: project.closingImage, alt: project.closingImageAlt };
 
-  if (project.heroVideo) {
-    return { url: project.heroVideo.poster, alt: project.heroAlt };
-  }
+  const dimensions = getImageMetadata(shareImage.url);
 
   return {
-    url: project.closingImage,
-    alt: project.closingImageAlt,
+    ...shareImage,
+    ...(dimensions?.width && dimensions?.height
+      ? { width: dimensions.width, height: dimensions.height }
+      : {}),
   };
 }
 

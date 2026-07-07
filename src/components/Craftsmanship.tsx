@@ -13,7 +13,7 @@ export default function Craftsmanship() {
             <div className="relative aspect-[4/5] overflow-hidden sm:aspect-[3/4] lg:aspect-[4/5]">
               <ProjectImage
                 src={projectImages.galleryTerrace}
-                alt="Architectural concrete terraced steps — refined craftsmanship"
+                alt="Terraced concrete steps with natural stone retaining walls"
                 className="absolute inset-0 h-full w-full"
                 objectPosition="center 42%"
                 sizes="(max-width: 1024px) 100vw, 50vw"

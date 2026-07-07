@@ -8,7 +8,7 @@ const featuredProject = {
     "A clean, durable concrete footpath designed to provide seamless access while complementing the surrounding landscape.",
   image: projectImages.footpath,
   objectPosition: "center center",
-  alt: "Footpath — architectural concrete",
+  alt: "Concrete footpath with clean edges through a landscaped garden",
 };
 
 const pairedProjects = [
@@ -21,7 +21,7 @@ const pairedProjects = [
     image: projectImages.driveway,
     objectPosition: "center center",
     aspect: "aspect-[4/5] lg:aspect-[3/4]",
-    alt: "Driveway extension — structural concrete",
+    alt: "Exposed aggregate driveway extension blending with the existing surface",
   },
   {
     id: 3,
@@ -32,7 +32,7 @@ const pairedProjects = [
     image: projectImages.wall,
     objectPosition: "center center",
     aspect: "aspect-[4/5] lg:aspect-[3/4]",
-    alt: "Retaining wall — structural concrete",
+    alt: "Architectural concrete retaining wall with clean vertical faces",
   },
 ];
 
@@ -45,7 +45,7 @@ const galleryProjects = [
       "Precision-formed driveway featuring smooth coved transitions that elevate both appearance and long-term performance.",
     image: projectImages.cove,
     objectPosition: "center center",
-    alt: "Coved driveway — architectural concrete",
+    alt: "Driveway with smooth coved transitions and exposed aggregate finish",
   },
   {
     id: 5,
@@ -55,7 +55,7 @@ const galleryProjects = [
       "Burnished concrete slab designed as the foundation for a bespoke outdoor sauna, delivering a clean architectural finish and durable performance.",
     image: projectImages.sauna,
     objectPosition: "center center",
-    alt: "Sauna area — burnished architectural concrete slab foundation for outdoor sauna",
+    alt: "Burnished concrete slab forming the foundation for an outdoor sauna area",
   },
 ];
 

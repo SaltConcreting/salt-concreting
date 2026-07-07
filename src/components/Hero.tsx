@@ -53,7 +53,7 @@ export default function Hero() {
           >
             <ProjectImage
               src={slide.src}
-              alt={slide.alt}
+              alt={index === activeSlide ? slide.alt : ""}
               className="h-[108%] w-full"
               objectPosition={slide.objectPosition}
               priority={index === 0}
