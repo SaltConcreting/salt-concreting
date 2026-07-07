@@ -1,5 +1,7 @@
 import type { ProjectDetail } from "@/types/project";
 import {
+  buildProjectDescription,
+  buildProjectTitle,
   DEFAULT_DESCRIPTION,
   DEFAULT_OG_IMAGE,
   getProjectShareImage,
@@ -132,7 +134,8 @@ export function buildProjectSchemaGraph(project: ProjectDetail): Record<string, 
   const orgId = organizationId();
   const pageUrl = absoluteUrl(`/projects/${project.slug}`);
   const shareImage = getProjectShareImage(project);
-  const description = project.introduction.paragraphs[0];
+  const title = buildProjectTitle(project);
+  const description = buildProjectDescription(project);
 
   return {
     "@context": "https://schema.org",
@@ -158,7 +161,7 @@ export function buildProjectSchemaGraph(project: ProjectDetail): Record<string, 
         "@type": "WebPage",
         "@id": `${pageUrl}#webpage`,
         url: pageUrl,
-        name: `${project.title} | ${SITE_NAME}`,
+        name: title,
         description,
         inLanguage: "en-AU",
         isPartOf: { "@id": websiteId() },

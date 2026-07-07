@@ -7,7 +7,20 @@ export const DEFAULT_TITLE =
   "SALT Concreting & Carpentry | Architectural Concrete · Sydney";
 
 export const DEFAULT_DESCRIPTION =
-  "Luxury architectural concrete and carpentry for Sydney's finest residential and commercial projects. Craftsmanship without compromise.";
+  "Architectural concreting and carpentry across Sydney. Bespoke benchtops, stairs, seating and outdoor concrete for residential and commercial projects. Craftsmanship without compromise.";
+
+export function buildProjectTitle(project: ProjectDetail): string {
+  const suburb = project.location.replace(", NSW", "");
+  return `${project.title} · ${suburb} | ${SITE_NAME}`;
+}
+
+export function buildProjectDescription(project: ProjectDetail): string {
+  if (project.metaDescription) {
+    return project.metaDescription;
+  }
+
+  return project.introduction.paragraphs[0];
+}
 
 /** Default social share image — primary hero and featured-project photography. */
 export const DEFAULT_OG_IMAGE = {

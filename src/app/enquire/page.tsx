@@ -7,7 +7,7 @@ import { buildOpenGraph, buildTwitter } from "@/lib/metadata";
 
 const title = "Enquire | SALT Concreting & Carpentry";
 const description =
-  "Share your architectural concrete project with SALT. We respond within 1–2 business days with a tailored consultation.";
+  "Discuss your architectural concrete project with SALT. Servicing Greater Sydney, we respond within 1–2 business days with a tailored consultation.";
 
 export const metadata: Metadata = {
   title,

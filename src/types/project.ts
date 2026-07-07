@@ -28,6 +28,8 @@ export type ProjectDetail = {
   title: string;
   location: string;
   projectType: string;
+  /** Search-optimised description; visible intro copy remains in introduction. */
+  metaDescription?: string;
   heroImage?: string;
   heroVideo?: ProjectHeroVideo;
   heroObjectPosition?: string;

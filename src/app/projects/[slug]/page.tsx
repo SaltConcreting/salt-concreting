@@ -7,6 +7,8 @@ import ProjectDetail from "@/components/ProjectDetail";
 import { getAllProjectSlugs, getProjectBySlug } from "@/data/projects";
 import {
   buildOpenGraph,
+  buildProjectDescription,
+  buildProjectTitle,
   buildTwitter,
   getProjectShareImage,
 } from "@/lib/metadata";
@@ -30,8 +32,8 @@ export async function generateMetadata({
     return { title: "Project Not Found | SALT Concreting & Carpentry" };
   }
 
-  const title = `${project.title} | SALT Concreting & Carpentry`;
-  const description = project.introduction.paragraphs[0];
+  const title = buildProjectTitle(project);
+  const description = buildProjectDescription(project);
   const path = `/projects/${slug}`;
   const image = getProjectShareImage(project);
 

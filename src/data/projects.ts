@@ -10,6 +10,8 @@ export const projects: ProjectDetail[] = [
     title: "Avalon Residence",
     location: "Avalon, NSW",
     projectType: "Architectural Concrete Benchtop",
+    metaDescription:
+      "Architectural concrete benchtop with integrated BBQ at an Avalon residence. Custom formwork and finish for seamless outdoor entertaining.",
     heroImage: `${avalonBase}/hero.jpeg`,
     heroObjectPosition: "center center",
     heroAlt:
@@ -79,6 +81,8 @@ export const projects: ProjectDetail[] = [
     title: "Narrabeen Residence",
     location: "Narrabeen, NSW",
     projectType: "Architectural Concrete Staircase",
+    metaDescription:
+      "Architectural concrete staircase at a Narrabeen residence, individually formed through sandstone walls and a mature garden landscape.",
     heroImage: `${narrabeenBase}/finish.jpeg`,
     heroObjectPosition: "62% 44%",
     heroAlt:
@@ -157,6 +161,8 @@ export const projects: ProjectDetail[] = [
     title: "Zetland Courtyard",
     location: "Zetland, NSW",
     projectType: "Architectural Concrete Seating",
+    metaDescription:
+      "Sculptural architectural concrete seating for a Zetland courtyard, individually formed to frame the spa and complement contemporary architecture.",
     heroVideo: {
       src: `${zetlandBase}/hero.mp4`,
       poster: `${zetlandBase}/hero-poster.jpeg`,

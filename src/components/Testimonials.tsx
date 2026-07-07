@@ -27,6 +27,7 @@ export default function Testimonials() {
           <p className="label-luxury text-[10px] text-gold sm:text-[11px]">
             Testimonials
           </p>
+          <h2 className="sr-only">Client Testimonials</h2>
         </AnimateOnScroll>
 
         <div className="mt-16 lg:mt-24">
