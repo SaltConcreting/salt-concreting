@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, DM_Sans } from "next/font/google";
+import JsonLd from "@/components/JsonLd";
 import {
   buildOpenGraph,
   buildTwitter,
   DEFAULT_DESCRIPTION,
   DEFAULT_TITLE,
 } from "@/lib/metadata";
+import { buildSiteSchemaGraph } from "@/lib/schema";
 import { getSiteOrigin } from "@/lib/site";
 import "./globals.css";
 
@@ -48,7 +50,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en-AU" className={`${cormorant.variable} ${dmSans.variable}`}>
-      <body className="antialiased">{children}</body>
+      <body className="antialiased">
+        <JsonLd data={buildSiteSchemaGraph()} />
+        {children}
+      </body>
     </html>
   );
 }

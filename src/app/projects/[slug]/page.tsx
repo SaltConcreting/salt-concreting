@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Footer from "@/components/Footer";
+import JsonLd from "@/components/JsonLd";
 import Navbar from "@/components/Navbar";
 import ProjectDetail from "@/components/ProjectDetail";
 import { getAllProjectSlugs, getProjectBySlug } from "@/data/projects";
@@ -9,6 +10,7 @@ import {
   buildTwitter,
   getProjectShareImage,
 } from "@/lib/metadata";
+import { buildProjectSchemaGraph } from "@/lib/schema";
 
 type ProjectPageProps = {
   params: Promise<{ slug: string }>;
@@ -63,6 +65,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
   return (
     <>
+      <JsonLd data={buildProjectSchemaGraph(project)} />
       <Navbar />
       <main className="w-full min-w-0 max-w-full">
         <ProjectDetail project={project} />
