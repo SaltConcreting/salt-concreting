@@ -8,7 +8,7 @@ export const DEFAULT_TITLE =
   "SALT Concreting & Carpentry | Architectural Concrete · Sydney";
 
 export const DEFAULT_DESCRIPTION =
-  "Architectural concreting and carpentry across Sydney. Bespoke benchtops, stairs, seating and outdoor concrete for residential and commercial projects. Craftsmanship without compromise.";
+  "Premium architectural concreting and carpentry across Sydney. Bespoke benchtops, stairs, seating and outdoor concrete for residential and commercial projects.";
 
 export function buildProjectTitle(project: ProjectDetail): string {
   const suburb = project.location.replace(", NSW", "");

@@ -6,6 +6,10 @@ import Navbar from "@/components/Navbar";
 export const metadata: Metadata = {
   title: "Page Not Found | SALT Concreting & Carpentry",
   robots: { index: false, follow: true },
+  // Prevent inheriting the homepage canonical from the root layout.
+  alternates: {
+    canonical: null,
+  },
 };
 
 export default function NotFound() {

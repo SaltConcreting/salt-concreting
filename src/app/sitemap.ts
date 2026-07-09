@@ -7,7 +7,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     {
-      url: `${siteUrl}/`,
+      // Match the homepage canonical (trailingSlash: false → origin, no slash).
+      url: siteUrl,
       changeFrequency: "monthly",
       priority: 1,
     },
