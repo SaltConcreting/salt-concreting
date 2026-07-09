@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, DM_Sans } from "next/font/google";
 import JsonLd from "@/components/JsonLd";
 import {
@@ -8,6 +8,7 @@ import {
   DEFAULT_TITLE,
 } from "@/lib/metadata";
 import { buildSiteSchemaGraph } from "@/lib/schema";
+import { BRAND_ICON_COLORS } from "@/lib/brand-icon";
 import { getSiteOrigin } from "@/lib/site";
 import "./globals.css";
 
@@ -24,6 +25,10 @@ const dmSans = DM_Sans({
   variable: "--font-dm-sans",
   display: "swap",
 });
+
+export const viewport: Viewport = {
+  themeColor: BRAND_ICON_COLORS.black,
+};
 
 export const metadata: Metadata = {
   metadataBase: getSiteOrigin(),
