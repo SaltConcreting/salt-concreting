@@ -1,17 +1,25 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { mainNavLinks } from "@/lib/navigation";
 import Logo from "./Logo";
 import QuoteButton from "./QuoteButton";
 
 export default function Navbar() {
+  const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+  // Project heroes (especially light ones) sit behind a transparent header.
+  // Use the existing elevated chrome from the top so nav stays readable.
+  const isProjectPage = pathname.startsWith("/projects/");
+  const isElevated = isScrolled || isMobileMenuOpen || isProjectPage;
+
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 60);
+    handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -26,7 +34,7 @@ export default function Navbar() {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-700 ${
-        isScrolled || isMobileMenuOpen
+        isElevated
           ? "border-b border-white/[0.04] bg-black/80 backdrop-blur-2xl"
           : "bg-transparent"
       }`}
