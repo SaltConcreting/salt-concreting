@@ -82,12 +82,6 @@ function ProjectOverlay({
         <p className="mt-2 text-sm font-light text-muted-light">
           {description}
         </p>
-        <div className="mt-6 flex items-center gap-3 opacity-0 transition-all duration-700 group-hover:opacity-100">
-          <span className="text-[11px] uppercase tracking-[0.25em] text-warm-white">
-            View
-          </span>
-          <span className="h-px w-8 bg-gold transition-all duration-700 group-hover:w-16" />
-        </div>
       </div>
     </>
   );
@@ -118,7 +112,7 @@ export default function Projects() {
         <div className="mt-20 space-y-6 sm:mt-28 sm:space-y-8 lg:space-y-10">
           {/* Featured — full-width cinematic */}
           <AnimateOnScroll>
-            <article className="group relative cursor-pointer">
+            <article className="group relative">
               <div className="relative aspect-[4/5] overflow-hidden sm:aspect-[16/10] lg:aspect-[21/9]">
                 <ProjectImage
                   src={featuredProject.image}
@@ -140,7 +134,7 @@ export default function Projects() {
           <div className="grid gap-6 sm:gap-8 lg:grid-cols-2 lg:gap-10">
             {pairedProjects.map((project, index) => (
               <AnimateOnScroll key={project.id} delay={index * 80}>
-                <article className="group relative h-full cursor-pointer">
+                <article className="group relative h-full">
                   <div
                     className={`relative overflow-hidden ${project.aspect}`}
                   >
@@ -166,7 +160,7 @@ export default function Projects() {
           <div className="grid gap-6 sm:gap-8 lg:grid-cols-2 lg:gap-10">
             {galleryProjects.map((project, index) => (
               <AnimateOnScroll key={project.id} delay={index * 80}>
-                <article className="group relative cursor-pointer">
+                <article className="group relative">
                   <div className="relative aspect-[4/5] overflow-hidden sm:aspect-[3/4]">
                     <ProjectImage
                       src={project.image}

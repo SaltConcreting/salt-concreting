@@ -15,7 +15,7 @@ const projectTypes = [
 ] as const;
 
 const whyChooseSalt = [
-  "10+ Years Experience",
+  "Over 10 years of experience",
   "Architectural-quality finishes",
   "Residential & Commercial Projects",
   "Sydney-wide Service",

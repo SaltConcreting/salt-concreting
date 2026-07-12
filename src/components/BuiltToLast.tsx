@@ -1,7 +1,7 @@
 import AnimateOnScroll from "./AnimateOnScroll";
 
 const stats = [
-  { value: "11+", label: "Years Experience" },
+  { value: "10+", label: "Years Experience" },
   { value: "Sydney", label: "Servicing All Sydney" },
   { value: "100%", label: "Custom Built" },
 ];
@@ -18,10 +18,10 @@ export default function BuiltToLast() {
             Built to Last
           </h2>
           <p className="mt-12 text-base font-light leading-[2] text-[color-mix(in_srgb,var(--color-muted-dark)_72%,var(--color-black))] sm:mt-16 sm:text-[17px]">
-            For over 11 years I&apos;ve specialised in creating architectural
-            concrete that becomes part of the home—not just another construction
-            material. Every project is individually formed, poured and finished
-            with an obsession for detail.
+            With over 10 years of experience, I&apos;ve specialised in creating
+            architectural concrete that becomes part of the home—not just another
+            construction material. Every project is individually formed, poured
+            and finished with an obsession for detail.
           </p>
         </AnimateOnScroll>
 
