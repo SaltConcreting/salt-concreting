@@ -10,10 +10,14 @@ type ProjectVideoProps = {
   objectPosition?: string;
 };
 
-function getVideoType(src: string): string {
+/**
+ * MIME type for <source type>. Omit for .mov — Chrome rejects
+ * type="video/quicktime" and will not load the source, even when the
+ * container is H.264 and plays without a type attribute.
+ */
+function getVideoType(src: string): string | undefined {
   if (src.endsWith(".mp4")) return "video/mp4";
-  if (src.endsWith(".mov")) return "video/quicktime";
-  return "video/mp4";
+  return undefined;
 }
 
 export default function ProjectVideo({
