@@ -26,8 +26,8 @@ export function buildProjectDescription(project: ProjectDetail): string {
 /** Default social share image — primary hero and featured-project photography. */
 export const DEFAULT_OG_IMAGE = {
   url: "/images/projects/IMG_5719.jpeg",
-  width: 5282,
-  height: 4284,
+  width: 2400,
+  height: 1947,
   alt: "Outdoor kitchen with architectural concrete benchtop",
 } as const;
 
